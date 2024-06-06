@@ -31,8 +31,6 @@ public class ParallelMatrixSearch {
         boolean secuentialBool = sequentialSearch(matrix);
         long endTime = System.currentTimeMillis();
 
-        System.out.println(startTime);
-        System.out.println(endTime);
         System.out.println("Resultado búsqueda secuencial: " + secuentialBool);
         System.out.println("Tiempo búsqueda secuencial: " + (endTime - startTime) + "ms");
 
@@ -62,7 +60,7 @@ public class ParallelMatrixSearch {
         //...
         // Basic
         int chunks = MATRIX_SIZE  / THREAD_COUNT;
-        System.out.println("chunks" + chunks);
+        //System.out.println("chunks" + chunks);
         AtomicBoolean bool = new AtomicBoolean(false);
 
         //System.out.println("Paralelo");
@@ -75,7 +73,7 @@ public class ParallelMatrixSearch {
                         bool.set(true);
                     }
                 }
-                System.out.println();
+               // System.out.println();
             }
         });
 
@@ -89,11 +87,10 @@ public class ParallelMatrixSearch {
                         bool.set(true);
                     }
                 }
-                System.out.println();
+               // System.out.println();
             }
         });
 
-        System.out.println("thread03");
         Thread thread03 = new Thread(() -> {
             for (int i = chunks * 2; i < 3* chunks; i++) {
                 for (int j = 0; j < 3* chunks; j++) {
@@ -103,12 +100,11 @@ public class ParallelMatrixSearch {
                         bool.set(true);
                     }
                 }
-                System.out.println();
+              //  System.out.println();
             }
         });
 
 
-        System.out.println("thread04");
         Thread thread04 = new Thread(() -> {
             for (int i = chunks * 3; i < 4 * chunks; i++) {
                 for (int j = 0; j < 4 * chunks; j++) {
@@ -118,7 +114,7 @@ public class ParallelMatrixSearch {
                         bool.set(true);
                     }
                 }
-                System.out.println();
+              //  System.out.println();
             }
         });
 
